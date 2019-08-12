@@ -15,7 +15,7 @@ Parameters:
         Description: Please enter the IP range (CIDR notation) for this VPC
         Type: String
         Default: 10.0.0.0/16
-
+        
 Resources:
 
     VPC: 
@@ -25,4 +25,11 @@ Resources:
             EnableDnsHostnames: true
             Tags: 
                 - Key: Name 
+                  Value: !Ref EnvironmentName
+            
+    InternetGateway:
+        Type: AWS::EC2::InternetGateway
+        Properties:
+            Tags:
+                - Key: Name
                   Value: !Ref EnvironmentName
