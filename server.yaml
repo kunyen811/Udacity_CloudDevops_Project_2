@@ -1,0 +1,20 @@
+Description: >
+  Kun-Yen Tsai / Udacity Cloud Devops nanodegree 
+  This template deploys the security groups needed by the Udagram application
+
+Parameters:
+  EnvironmentName:
+    Description: An Environment name that will be prefixed to resources
+    Type: String
+  S3CodeBucketName:
+    Description: >- 
+      The name of the S3 bucket containing the zipped application code 
+      to be deployed
+    Type: String
+    AllowedPattern: ^[0-9a-zA-Z][0-9a-zA-Z-]*$
+  S3CodeArchive:
+    Description: The application code archive (must end with .zip)
+    Type: String
+    AllowedPattern: ^.*\.zip$
+
+Resources:
