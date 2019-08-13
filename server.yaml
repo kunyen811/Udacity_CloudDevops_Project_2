@@ -51,6 +51,11 @@ Resources:
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0
+#       - IpProtocol: tcp
+#         FromPort: 22
+#         ToPort: 22
+#         CidrIp: 0.0.0.0/0
+# port 22 is for troubleshoot only. Should be closed after finished
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 0
@@ -66,20 +71,17 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
-          # Install Apache 2
           apt-get update -y
           apt-get install unzip awscli -y
           apt-get install apache2 -y
           systemctl start apache2.service
           cd /var/www/html
-          # Copy the web application archive
           aws s3 cp s3://${S3CodeBucketName}/${S3CodeArchive} .
-          # unzip the archive
           unzip -o ${S3CodeArchive}
+      ImageId: ami-06f2f779464715dc5
       SecurityGroups:
         - Ref: WebServerSecGroup
       InstanceType: t3.medium
-      ImageId: ami-005bdb005fb00e791
       IamInstanceProfile: !Ref RootInstanceProfile
       BlockDeviceMappings:
         - DeviceName: "/dev/sdk"

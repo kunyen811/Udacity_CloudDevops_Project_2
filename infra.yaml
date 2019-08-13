@@ -121,7 +121,7 @@ Resources:
         Properties: 
             AllocationId: !GetAtt NatGateway1EIP.AllocationId
             SubnetId: !Ref PublicSubnet1
-
+# question about the SubnetId
     NatGateway2: 
         Type: AWS::EC2::NatGateway
         Properties:

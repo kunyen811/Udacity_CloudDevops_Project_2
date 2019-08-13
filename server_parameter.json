@@ -1,7 +1,7 @@
 [
     {
         "ParameterKey": "EnvironmentName",
-        "ParameterValue": "UdacityDevopsProject"
+        "ParameterValue": "UdacityProject"
     },
     {
         "ParameterKey": "S3CodeBucketName",
