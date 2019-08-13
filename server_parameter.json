@@ -1,6 +1,14 @@
 [
     {
         "ParameterKey": "EnvironmentName",
-        "ParameterValue": "UdacityProject"
-    }
+        "ParameterValue": "UdacityDevopsProject"
+    },
+    {
+        "ParameterKey": "S3CodeBucketName",
+        "ParameterValue": "udacity-cloud-devops-project-2"
+    } ,
+    {
+        "ParameterKey": "S3CodeArchive",
+        "ParameterValue": "udagram.zip"
+    } 
 ]
