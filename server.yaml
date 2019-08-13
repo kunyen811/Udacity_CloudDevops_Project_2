@@ -145,7 +145,7 @@ Resources:
         Fn::ImportValue:
           !Sub "${EnvironmentName}-VPC-ID"
 
-  S3CodeBucketCopyRole:
+  S3BucketCopyRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -162,9 +162,9 @@ Resources:
     Properties:
       Path: /
       Roles:
-        - !Ref S3CodeBucketCopyRole
+        - !Ref S3BucketCopyRole
 
-  S3CodeBucketCopyPolicy:
+  S3BucketCopyPolicy:
     Type: AWS::IAM::Policy
     Properties: 
       PolicyName: S3CodeBucketCopyPolicy
@@ -176,7 +176,7 @@ Resources:
               - s3:GetObject
             Resource: "*"
       Roles: 
-        - !Ref S3CodeBucketCopyRole
+        - !Ref S3BucketCopyRole
 
 Outputs:
   WALB:
