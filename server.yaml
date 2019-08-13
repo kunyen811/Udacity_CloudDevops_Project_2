@@ -1,6 +1,6 @@
 Description: >
   Kun-Yen Tsai / Udacity Cloud Devops 2019 - 
-  This template deploys the security groups needed by the Udagram application
+  This template deploys Udagram application
 
 Parameters:
   EnvironmentName:
