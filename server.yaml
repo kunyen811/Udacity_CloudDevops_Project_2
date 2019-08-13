@@ -79,6 +79,7 @@ Resources:
           aws s3 cp s3://${S3CodeBucketName}/${S3CodeArchive} .
           unzip -o ${S3CodeArchive}
       ImageId: ami-06f2f779464715dc5
+      #KeyName: that-one for SSH troubleshoot purpose
       SecurityGroups:
         - Ref: WebServerSecGroup
       InstanceType: t3.medium
@@ -107,7 +108,7 @@ Resources:
         - Fn::ImportValue: !Sub "${EnvironmentName}-PUB2-SN"
       SecurityGroups: [ !Ref LoadBalancerSecGroup ]
   
-  LBListener: 
+  Listener: 
     Type: AWS::ElasticLoadBalancingV2::Listener
     Properties:
       DefaultActions:
@@ -126,7 +127,7 @@ Resources:
       Conditions:
         - Field: path-pattern
           Values: [/]
-      ListenerArn: !Ref LBListener
+      ListenerArn: !Ref Listener
       Priority: 1
   
   WebAppTargetGroup:
@@ -139,7 +140,7 @@ Resources:
       HealthyThresholdCount: 2
       Port: 80
       Protocol: HTTP
-      UnhealthyThresholdCount: 3
+      UnhealthyThresholdCount: 5
       VpcId: 
         Fn::ImportValue:
           !Sub "${EnvironmentName}-VPC-ID"

@@ -5,7 +5,7 @@
     },
     {
         "ParameterKey": "S3CodeBucketName",
-        "ParameterValue": "udacity-cloud-devops-project-2"
+        "ParameterValue": "udacityclouddevopsproject2"
     } ,
     {
         "ParameterKey": "S3CodeArchive",
